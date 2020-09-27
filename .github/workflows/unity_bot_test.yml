@@ -1,4 +1,4 @@
-name: Unity Vesion Bot
+name: Unity Version Bot
 
 on:
    schedule:
