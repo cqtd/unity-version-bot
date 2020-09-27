@@ -1,0 +1,30 @@
+name: Unity Version Bot (유니티버전봇)
+
+on:
+  schedule:
+    - cron: '55 22 * * *' # UST 기본이고 한국시간 07:55임
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-version: [3.7]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up python ${{ matrix.python-version }}
+      - uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install python pacakage
+        run: |
+        pip install selenium
+        pip install requests
+        pip install twython
+        pip install pillow
+
+      - name: Run!
+      run: |
+        python ./unity_version_bot.py
